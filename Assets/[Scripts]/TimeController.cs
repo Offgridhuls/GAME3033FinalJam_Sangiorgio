@@ -32,9 +32,11 @@ public class TimeController : MonoBehaviour
         if(isTimeSlowed)
         {
             slowedTimeDuration -= Time.deltaTime;
+            if (slowedTimeDuration < 0)
+                slowedTimeDuration = 0;
+
             if (slowedTimeDuration > 0)
             {
-                slowedTimeDuration = 0f;
                 Time.timeScale = slowedTime;
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
             }
